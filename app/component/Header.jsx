@@ -1,16 +1,20 @@
-import Link from "next/link"
+"use client";
 
+import Link from "next/link"
+import { usePathname } from 'next/navigation';
 const Header = () => {
+  const pathname = usePathname();
+
   return (
     <header className="header">
       <div className="container">
         <div className="logo">
-          <Link href='/'>Traversy Media</Link>   
+          <Link className={` ${pathname === "/" ? "active" : ""}`} href='/'>Github Repo Dashboard</Link>   
         </div>
         <div className='links'>
-          <Link href='/about'>About</Link>
-          <Link href='/about/team'>Our Team</Link>
-          <Link href='/code/repos'>Code</Link>
+          <Link className={` ${pathname === "/about" ? "active" : ""}`} href='/about'>About</Link>
+          <Link className={` ${pathname === '/about/team' ? "active" : ""}`} href='/about/team'>Our Team</Link>
+          <Link className={` ${pathname === '/code/repos' ? "active" : ""}`} href='/code/repos'>Code</Link>
         </div>
 
       </div>
